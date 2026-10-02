@@ -39,3 +39,13 @@ def llm_connect(
         use_responses_api=False,  # base url로 할 때는 이부분 넣어야 함.(MonoRouter 사용)
         max_tokens=max_tokens,
     )
+
+
+from langchain_openai import OpenAIEmbeddings
+
+def embedding_model(model: str = "text-embedding-3-small"):
+    return OpenAIEmbeddings(
+        model=model,
+        api_key=os.getenv("LLM_API_KEY"),
+        base_url=BASE_URL,
+    )
